@@ -9,15 +9,17 @@ Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/
 
   ```bash
     #in Bash/Terminal, do you remember what to do?
-    cd Desktop/SCW/Data
+    $ cd Desktop/SCW/Data
     
     #to check to see that you are where your file is
-    ls
-    
-    cp gapminder.txt ../Lesson2_IntrotoR/
+    $ ls
+    ByCountry/  gapminder.txt
+
+    $ cp gapminder.txt ../Lesson2_IntrotoR/
     
     #to check that it was copied properly
-    ls ../Lesson2_IntrotoR/
+    $ ls ../Lesson2_IntrotoR/
+    gapminder.txt
   ```
 
 ### Learning objectives
