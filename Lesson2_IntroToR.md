@@ -414,7 +414,7 @@ but what would be the simplest object that you can make with multiple elements?
     rm(list = ls())
     ```
     
-     <mark>**Challenge* 3*</mark>
+     <mark>**Challenge 3**</mark> Creating using data structures
     
     ```
     TASK: Try to create a list named 'myorder' that contains the 
