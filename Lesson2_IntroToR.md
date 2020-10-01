@@ -82,14 +82,14 @@ When you type commands in the console window and press 'ENTER', they are execute
    * The `>` symbol means that the R is ready for the next command. If you enter incomplete commands, you will see `+` which means that the system is waiting for you to complete the command. You can always press 'Esc' to return to `>` when stuck with `+` at the prompt.  
    * There is a handy feature that allows you to enter commands without typing them all out (known as autocomplete). For example, instead of typing `sqrt`, if you type `sq` and press `tab`, you see all words that start with `sq`. You can select the command you are looking for and press `enter`.  
    * Notice also that when you type a parenthesis `(` it automatically gives you both the opening and the closing 
-brackets `()`. Type 64 inside the parantheses, hit `enter` and the output is your result. R console behaves similarly with quotes.  
+brackets `()`. Type 64 inside the parentheses, hit `enter` and the output is your result. R console behaves similarly with quotes.  
 
    ```r
    > sqrt(64)
    > print("How are you?")
    ```
 
-   Notice that when you select `sqrt` and `print` with autocomplete feature, they come with parantheses, like so: `print()` and `sqrt()`. This is because these commands call functions and functions often need arguments. Function arguments(inputs to the function) are supplied inside the parantheses.
+   Notice that when you select `sqrt` and `print` with autocomplete feature, they come with parentheses, like so: `print()` and `sqrt()`. This is because these commands call functions and functions often need arguments. Function arguments(inputs to the function) are supplied inside the parentheses.
 
 ### Writing simple R scripts
 
@@ -196,7 +196,7 @@ getwd()
 
 #In our second example, `getwd()` is a function that outputs your current location
 #within the file system. Although there is no input (many functions do not require arguments), 
-#parantheses are still required for a proper syntax in R.
+#parentheses are still required for a proper syntax in R.
 ```
 
 There are thousands of built-in functions in R. 
@@ -264,7 +264,7 @@ typeof(score)
 is.integer(score)
 typeof(is.integer(score))
 ```
-The last expression is an example of a nested function. Nested functions are very common in R, but are very difficult to understand at first. You can always split nested function into a series of single function calls. Remember that the variable inside the most inner paranthesis is an argument(input)for the function that will be evaluated first. In this case, function `is.integer(score)` is evaluated first.
+The last expression is an example of a nested function. Nested functions are very common in R, but are very difficult to understand at first. You can always split nested function into a series of single function calls. Remember that the variable inside the most inner parenthesis is an argument(input)for the function that will be evaluated first. In this case, function `is.integer(score)` is evaluated first.
 
 #### Piping in R
 **Chaining** means that you invoke multiple method calls. As each method returns an object, you can actually allow the calls to be chained together in a single statement, without needing variables to store the intermediate results.
