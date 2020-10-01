@@ -153,7 +153,7 @@ rm(list=ls())
 * Names should be MEANINGFUL & CONSISTENT - help yourself and others to understand your code! 
 
 
-<mark>**Challenge 1**</mark> Assigning values to variables
+<mark>**Challenge 1:**</mark> Assigning values to variables
     
 ```
 TASK: What will be the value of each variable after each statement is executed in the following code?
@@ -281,7 +281,7 @@ score %>% sum(42) %>% sqrt()
 score %>% is.integer() %>% typeof()
 ```
 
-<mark>**Challenge 2**</mark> Learn how to read the output of nested functions and pipelines
+<mark>**Challenge 2:**</mark> Learn how to read the output of nested functions and pipelines
 ```
 TASK: Break the following expression into multiple single function calls.
 You will need to assign the output of each function to a variable that
@@ -416,7 +416,7 @@ but what would be the simplest object that you can make with multiple elements?
     rm(list = ls())
     ```
     
-     <mark>**Challenge 3**</mark> Creating using data structures
+     <mark>**Challenge 3:**</mark> Creating using data structures
     
     ```
     TASK: Try to create a list named 'myorder' that contains the 
@@ -561,7 +561,7 @@ This function is for .csv files (where fields are separated by a comma).
 
 Now we know how to read data frames into R. Let's use R to find out more about the data.
 
-<mark>**Challenge 4**</mark>  Play with gapminder dataset
+<mark>**Challenge 4:**</mark>  Play with gapminder dataset
 
 ```
 TASK: Answer the following questions about `myData` object
@@ -574,7 +574,7 @@ TASK: Answer the following questions about `myData` object
 6. Can you extract all countries for which life expectancy is below 70?
 7. Can you make a new column that contains population in units of millions of people?
 ```
-**Challenge: Answer**
+**Challenge 4: Answer**
 
 > ```r
 > 1. str()
@@ -609,7 +609,7 @@ To run your script from R studio (or R):
 source("R_commands.R")
 ```
 
-**Challenge**  Write your own R script
+**Challenge 5:**  Write your own R script
 ```
 Write a script to calculate mean gdpPerCap for African and European countries.
 
@@ -617,7 +617,7 @@ You might need to read help for 'mean' and 'barplot' functions
 ?mean
 ?barplot
 ```
-**Challenge: Answer**
+**Challenge 5: Answer**
 ```r
 ##This is  MeanGdp.R script
 
