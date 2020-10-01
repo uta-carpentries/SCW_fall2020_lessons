@@ -6,15 +6,26 @@ This lesson is based on [this Software Carpentry lesson](http://swcarpentry.gith
 #### Please make sure your directory structure is setup as described [here](https://github.com/uta-carpentries/SoftwareCarpentryWorkshops_general/blob/master/Data_DirectoryStructure_Setup.md)
 
 Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/` to `Lesson2_IntroToR` and take a look at our dataset in Excel. This dataset contains information about life expectancy, population sizes and gdp per capita in different countries for different years. Let's see how we can use R to analyze this dataset. 
-
+    ```
+    #in Bash/Terminal, do you remember what to do?
+    cd Desktop/SCW/Data
+    
+    #to check to see that you are where your file is
+    ls
+    
+    cp gapminder.txt ../Lesson2_IntrotoR/
+    
+    #to check that it was copied properly
+    ls ../Lesson2_IntrotoR/
+    ```
 
 ### Learning objectives
 - Understand benefits of using R
 - Understand how to work with RStudio
-- Understand how to go get data from Excel to R
-- Understand building blocks of R language
-- Understand how to extract parts of the dataset
-- Understand how to write simple R scripts
+- Get data from Excel to R
+- Use the building blocks of R language
+- Extract parts of the dataset
+- Write simple R scripts
 
 ## 1. Intro to R and RStudio
 
@@ -25,7 +36,7 @@ Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/
 * Open source software - use for free, modify as you wish
 * Active community of developers - new packages are being written as we speak
 
-### RStudio as interface for R(IDE - integrated development environment)
+### RStudio as interface for R (IDE - integrated development environment)
 We will be working with R using RStudio. This is a piece of software (also known as integrated development environment, IDE ) that makes working in R much easier. When you open RStudio, you should see 4 windows:
 
 * The 4 windows of RStudio:
@@ -36,19 +47,35 @@ We will be working with R using RStudio. This is a piece of software (also known
         * Environment tab keeps track of all objects you create in the current session
         * Both records can be saved for later as .Rhistory and .RData files
     * Bottom right = several helpful tabs, we will see how to use them later. For now, notice that 'Files' tab allows you to navigate between folders.
-          For this workshop we need to navigate to `Lesson2_IntroToR` folder. Click three dots icon at the top right corner of the 'Files' tab and navigate to `Desktop/SCW/Lesson2_IntroToR`.  You should see `gapminder.txt` file here. Now click 'More' and select 'Set as working directory'. Notice the change in your console window  - your work with R is now done from `Lesson2_IntroToR` folder.
-
-* Interactive mode. When you type commands in the console window and press 'ENTER', they are executed immediately and the output is displayed. Here are few examples:  
+ 
+ ### Navigating to the `Lesson2_IntrotoR` working directory
+ For this workshop we need to navigate to `Lesson2_IntroToR` folder. Many of you will be defaulted in the Documents folder as the current working directory. (You can change your `global options` in the Tools menu.) To change the working directory for the current environment, follow either the GUI steps or the Console steps below.
+ 
+ ####GUI Steps:
+ Click three dots icon at the top right corner of the 'Files' tab and navigate to `Desktop/SCW/Lesson2_IntroToR`.  You should see `gapminder.txt` file here. Now click 'More' and select 'Set as working directory'. Notice the change in your console window  - your work with R is now done from `Lesson2_IntroToR` folder.
+ 
+ ####Console Steps:
+  ```
+  #One option is to include the path.
+  setwd("C:/Users/peace/Desktop/SCW/Lesson2_IntroToR")
+  
+  #Another option for Windows users is to use choose the folder or file interactively using choose.dir() and file.choose().
+  setwd(choose.dir())
+  
+  #to check where you are use getwd().
+  getwd()
+  [1] "C:/Users/peace/Desktop/SCW/Lesson2_IntroToR"
+  ```
+  ### Beginning in R Studio
+When you type commands in the console window and press 'ENTER', they are executed immediately and the output is displayed. Here are few examples:  
    ```
    > 3+5
    > sqrt(64) 
    ```
             
-   Symbol `>` means that the R is ready for the next command. If you enter incomplete commands, you will see `+` which means that the system is waiting for you to complete the command. You can always press 'Esc' to return to `>` when stuck with `+` at the prompt.  
-
-   There is a handy feature that allows you to enter commands without typing them all out (known as autocomplete). For example, instead of typing `sqrt`, if you type `sq` and press `tab`, you see all words that start with `sq`. You can select the command you are looking for and press `enter`.  
-
-   Notice also that when you type a parenthesis `(` it automatically gives you both the opening and the closing 
+   * The `>` symbol means that the R is ready for the next command. If you enter incomplete commands, you will see `+` which means that the system is waiting for you to complete the command. You can always press 'Esc' to return to `>` when stuck with `+` at the prompt.  
+   * There is a handy feature that allows you to enter commands without typing them all out (known as autocomplete). For example, instead of typing `sqrt`, if you type `sq` and press `tab`, you see all words that start with `sq`. You can select the command you are looking for and press `enter`.  
+   * Notice also that when you type a parenthesis `(` it automatically gives you both the opening and the closing 
 brackets `()`. Type 64 inside the parantheses, hit `enter` and the output is your result. R console behaves similarly with quotes.  
 
    ```
@@ -57,10 +84,14 @@ brackets `()`. Type 64 inside the parantheses, hit `enter` and the output is you
    ```
 
    Notice that when you select `sqrt` and `print` with autocomplete feature, they come with parantheses, like so: `print()` and `sqrt()`. This is because these commands call functions and functions often need arguments. Function arguments(inputs to the function) are supplied inside the parantheses.
-   
-* Scripting mode. It is often the case that we need to reuse our commands. If so, you can type commands in the text editor window and save them as a text file.  
-   Let's open a new R Script file by clicking the `+` icon on the top left corner of scripting panel and write our command there, for example `print("Good morning!")`. To check if this command works, you can send it for execution to console with `CTR +Enter` click. Once you know you have a command that works, you can save the file and reuse the commands later.  
-   We have a very simple example here, but you can imagine writing hundreds of commands in the order you want them to be executed to accomplish a certain task. This is what an R program or R script is.  
+
+### Writing simple R scripts
+
+   It is often the case that we need to reuse our commands. An R script (or any other script) is a series of commands that are executed in the order they are written. The commands that we have executed one by one in R studio can be written to a text file and then executed all at once by running the file (which is now an R script). R scripts usually have .R extensions. 
+  
+   To write an R script, you can type commands in the text editor window and save them as a text file. 
+Let's open a new R Script file by clicking the `+` icon on the top left corner of scripting panel, choosing R Script, and writing our command there, for example `print("Good morning!")`. To check if this command works, you can send it for execution to console with `CTRL +Enter` click. Once you know you have a command that works, you can save the file and reuse the commands later.  
+   We have a very simple example here, but you can imagine writing hundreds of commands in the order you want them to be executed to accomplish a certain task. This is what an R program or R script is. Let's go ahead and begin filling in this script.
    It is a good practice to comment your code. The comments (statements that are helpful to the user, but are not executed) in R start with `#`.  
    Let's add a comment to our simple script.
 
@@ -79,7 +110,9 @@ Let's work in scripting mode from now on so that you will have the record of all
 ### Variables/objects
 
 One of the main concepts of any programming language is a notion of a **variable**. Variables are created to store values for future use. 
-To assign a value to a variable in R, use `<-` (Alt + dash) assignment operator:
+To assign a value to a variable in R, use `<-`assignment operator. The keyboard shortcut is
+* For Windows: Alt+-
+* For Macs: Option+-
 ```
 ### Variables
 
@@ -109,8 +142,9 @@ rm(list=ls())
 
 **A note on variable names:**
 * NO SPACES in names
-* DO NOT START with numbers
-* Names should be MEANINGFUL - help yourself and others to understand your code! 
+* DO NOT START with numbers or underscores
+* R distinguishes between capital letters and lowercase letters
+* Names should be MEANINGFUL & CONSISTENT - help yourself and others to understand your code! 
 
 
 **Challenge**
@@ -175,6 +209,13 @@ install.package("knitr")
 #load package into R
 library(knitr)
 ```
+
+You can also check which packages are installed.
+
+```
+installed.packages()
+```
+
 ### Data types and Data structures
 
 
@@ -196,17 +237,34 @@ Variables can hold values of various types. Most common data types:
 * complex
 * ...
 
-To find out the data type of an object, use `typof()` function:
+The most common numeric classes used in R are integer and double (for double precision floating point numbers). R automatically converts between these two classes when needed for mathematical purposes.
+
+To find out the data type of an object, use `typeof()` function:
 
 ```
-score<-79
+score <- 79
 typeof(score)
 is.integer(score)
 typeof(is.integer(score))
 ```
 The last expression is an example of a nested function. Nested functions are very common in R, but are very difficult to understand at first. You can always split nested function into a series of single function calls. Remember that the variable inside the most inner paranthesis is an argument(input)for the function that will be evaluated first. In this case, function `is.integer(score)` is evaluated first.
 
-**Challenge** Learn how to read the output of nested help functions
+#### Piping in R
+**Chaining** means that you invoke multiple method calls. As each method returns an object, you can actually allow the calls to be chained together in a single statement, without needing variables to store the intermediate results.
+If you prefer piping to nested functions, you can use packages like **tidyverse** or **magrittr** which use the `%>%` notation as piping, read as "THEN." To type `%>%`, the keyboard sortcut it Ctrl+Shift+M.
+The notation goes from `function(argument)` and instead is written as `argument %<% function()`. If there are more than one arguments, you continue to place the others in the brackets. 
+```
+install.packages("magrittr")
+library(magrittr)
+
+#What would you use instead of sqrt(sum(score, 42))?
+score %>% sum(42) %>% sqrt()
+
+#Can you do the same for the original nested function?
+score %>% is.integer() %>% typeof()
+```
+
+**Challenge** Learn how to read the output of nested functions and pipelines
 ```
 TASK: Break the following expression into multiple single function calls.
 You will need to assign the output of each function to a variable that
@@ -229,7 +287,10 @@ is.logical(is.numeric(typeof(is.integer(score))))
 > step4 <- is.logical(step3)
 > print(step4)
 > ## Or as a single step:
+> # nested functions
 > print(is.logical(is.numeric(typeof(is.integer(score)))))
+> # pipeline
+> score %>% is.integer() %>% typeof() %>% is.numeric() %>% is.logical()
 > ```
 
 Sometimes you will need to convert between data types. There are functions that do that: `as.integer()`, `as.character()`, and so on. The conversion between data types is not always possible. Let's see what happens here:
@@ -327,20 +388,26 @@ but what would be the simplest object that you can make with multiple elements?
     str(l)
     length(l)
     ```
+    
+    Let's clear our environment
+    ```
+    rm(list = ls())
+    ```
+    
      **Challenge** 
     
     ```
     TASK: Try to create a list named 'myorder' that contains the 
     following data structures as list elements:
 
-    -- Element 1 is a character vector of length 4 that 
+    -- Element 1 is a character vector called 'menuItems' of length 4 that 
     lists the menu items you ordered from the restaurant: 
     chicken, soup, salad, tea.
 
-    -- Element 2 is a factor that describes menu items
+    -- Element 2 is a factor called 'menuType' that describes menu items
     as "liquid" or "solid" categories.
 
-    -- Element 3 is a vector that records the cost of each menu item:
+    -- Element 3 is a vector called 'menuCost' that records the cost of each menu item:
     4.99, 2.99, 3.29, 1.89.
 
     *Hint: Define your elements first, then create a list with them.
@@ -363,9 +430,13 @@ but what would be the simplest object that you can make with multiple elements?
 * **Data frames**
     * Let's go back to gapminder dataset. Could you make an informative guess about how this data structure can be represented in R?
 
-    * Yes! It is a list of vectors of equal length, or a data frame. 
-    gapminder <- list(country <- c("afghan","albania"),continent <- c("asia","america"),year <- c(1952,1953))
-    str(gapminder)
+    * Yes! It is a list of vectors of equal length, or a data frame. If we make an example of it as `gapm`, we can see the structure.
+    
+    ```
+    gapm <- list(country <- c("afghan","albania"),continent <- c("asia","america"),year <- c(1952,1953))
+    str(gapm)
+    ```
+    
     Data frames are extremely useful data structures as they represent table-like datasets. 
     Let's look at our myorder list to see if we can make data frame out of it. 
     Is the list we just made suitable for a data frame? Yes, the elements of the list are vectors of equal size.
@@ -409,7 +480,7 @@ v[-c(3:5)]
 
 
 ## the above works for lists too, notice that [] returns list, use [[]] to return vector
-## try subsetting myOrder list we created above
+## try subsetting myorder list we created above
 myorder[1]
 myorder[[1]]
 
@@ -513,53 +584,19 @@ TASK: Answer the following questions about `myData` object
 > You can verify that you added a column with head(myData)
 > ```
 
-## 4. Writing simple R scripts
+## 4. Saving R scripts
 
-An R script (or any other script) is a series of commands that are executed in the order they are written. The commands that we have executed one by one in R studio can be written to a text file and then executed all at once by running the file (which is now an R script). R scripts usually have .R extensions. Here is an example of a simple R script that will plot life expectancy over years for Canada. 
-
-```{r}=
-##This is  PlotLifeExp.R script
-
-#read data into R
-myDataFull<-read.table("gapminder.txt", header = TRUE)
-
-#myDataFull is a dataframe - check
-
-#select information about Canada
-Canada<-myDataFull[myDataFull$country=="Canada",]
-
-#Canada is a new dataframe
-
-#plot lifeExp 
-plot(Canada$year, Canada$lifeExp, col="blue", type="l")
+As you recall, an R script (or any other script) is a series of commands that are executed in the order they are written. Be sure to save your updates.
 ```
 
-To run this script from R studio (or R):
+To run your script from R studio (or R):
 ```=
-source("PlotLifeExp.R")
+source("R_commands.R")
 ```
-You might want to save your plot as .png image. This requires only slight modification of our script.
-```{r}=
-##This is  PlotLifeExp.R script
 
-#read data into R
-myDataFull<-read.table("gapminder.txt", header = TRUE)
-
-#select information about Canada
-Canada<-myDataFull[myDataFull$country=="Canada",]
-
-#plot lifeExp 
-png("Canada.png")  #open png device to write your plot to 
-
-plot(Canada$year, Canada$lifeExp, col="blue", type="l")
-
-dev.off()  #close device; Canada.png will be saved to your current folder (R_intro)
-
-```
 **Challenge**  Write your own R script
 ```
 Write a script to calculate mean gdpPerCap for African and European countries.
-Try to make a barplot to display your results.
 
 You might need to read help for 'mean' and 'barplot' functions
 ?mean
@@ -567,7 +604,7 @@ You might need to read help for 'mean' and 'barplot' functions
 ```
 **Challenge: Answer**
 ```{r}=
-##This is  MeanGdpPlot.R script
+##This is  MeanGdp.R script
 
 #read data into R
 myDataFull<-read.table("gapminder.txt", header = TRUE)
@@ -584,8 +621,10 @@ Euro.Mean <- mean(Europe$gdpPercap)
 
 #Store the mean values in a vector
 Afri.Euro.Mean <- c(Afri.Mean, Euro.Mean)
+Afri.Euro.Mean
 
-#plot MeanGdp
+
+#You can also plot MeanGdp
 #open png device to write your plot to 
 png("Afri.Euro.Mean.png") 
 
