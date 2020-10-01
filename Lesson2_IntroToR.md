@@ -7,7 +7,7 @@ This lesson is based on [this Software Carpentry lesson](http://swcarpentry.gith
 
 Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/` to `Lesson2_IntroToR` and take a look at our dataset in Excel. This dataset contains information about life expectancy, population sizes and gdp per capita in different countries for different years. Let's see how we can use R to analyze this dataset. 
 
-  ```linux
+  ```bash
     #in Bash/Terminal, do you remember what to do?
     cd Desktop/SCW/Data
     
