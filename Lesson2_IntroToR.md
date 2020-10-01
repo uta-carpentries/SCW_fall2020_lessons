@@ -151,7 +151,7 @@ rm(list=ls())
 * Names should be MEANINGFUL & CONSISTENT - help yourself and others to understand your code! 
 
 
-<mark>**Challenge 1**</mark>
+<mark>**Challenge 1**</mark> Assigning values to variables
     
 ```
 TASK: What will be the value of each variable after each statement is executed in the following code?
@@ -491,7 +491,7 @@ but what would be the simplest object that you can make with multiple elements?
 Now let's talk about how to take your dataset apart. In general, you can access every element of your data set. You must be able to do that to manipulate and analyze your data. There are three general ways to subset the data:
 
 1. **By position index**: Use `[]` operator
-```{r}
+```r
 v<-c(2:10)
 v
 
