@@ -7,7 +7,7 @@ This lesson is based on [this Software Carpentry lesson](http://swcarpentry.gith
 
 Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/` to `Lesson2_IntroToR` and take a look at our dataset in Excel. This dataset contains information about life expectancy, population sizes and gdp per capita in different countries for different years. Let's see how we can use R to analyze this dataset. 
 
-  ```
+  ```linux
     #in Bash/Terminal, do you remember what to do?
     cd Desktop/SCW/Data
     
@@ -58,7 +58,7 @@ We will be working with R using RStudio. This is a piece of software (also known
  Click three dots icon at the top right corner of the 'Files' tab and navigate to `Desktop/SCW/Lesson2_IntroToR`.  You should see `gapminder.txt` file here. Now click 'More' and select 'Set as working directory'. Notice the change in your console window  - your work with R is now done from `Lesson2_IntroToR` folder.
  
  #### Console Steps:
-  ```
+  ```r
   #One option is to include the path.
   setwd("C:/Users/peace/Desktop/SCW/Lesson2_IntroToR")
   
@@ -72,7 +72,7 @@ We will be working with R using RStudio. This is a piece of software (also known
   
   ### Beginning in R Studio
 When you type commands in the console window and press 'ENTER', they are executed immediately and the output is displayed. Here are few examples:  
-   ```
+   ```r
    > 3+5
    > sqrt(64) 
    ```
@@ -82,7 +82,7 @@ When you type commands in the console window and press 'ENTER', they are execute
    * Notice also that when you type a parenthesis `(` it automatically gives you both the opening and the closing 
 brackets `()`. Type 64 inside the parantheses, hit `enter` and the output is your result. R console behaves similarly with quotes.  
 
-   ```
+   ```r
    > sqrt(64)
    > print("How are you?")
    ```
@@ -99,7 +99,7 @@ Let's open a new R Script file by clicking the `+` icon on the top left corner o
    It is a good practice to comment your code. The comments (statements that are helpful to the user, but are not executed) in R start with `#`.  
    Let's add a comment to our simple script.
 
-   ```
+   ```r
     #my first R command 
     print("Good morning")
    ```
@@ -117,7 +117,7 @@ One of the main concepts of any programming language is a notion of a **variable
 To assign a value to a variable in R, use `<-`assignment operator. The keyboard shortcut is
 * For Windows: `Alt+-`
 * For Macs: `Option+-`
-```
+```r
 ### Variables
 
 #variable `name` that stores value "Jane"
@@ -167,7 +167,7 @@ As you can see, a variable is assigned a value equal to the value of the evaluat
 
 **Challenge 1: Answer**
 
-> ```
+> ```r
 > > mass
 > [1] 109.25
 > > age
@@ -180,7 +180,7 @@ As you can see, a variable is assigned a value equal to the value of the evaluat
 
 In general, a function takes an input and transforms it according to the function's definition(rules). 
 You can recognize functions in R by the presence of parantheses. Function's **arguments** are supplied inside parantheses.
-```
+```r
 ###applying square root function
 mass<-64                #mass is a variable
 sqrt(mass)              #sqrt() is a function with `mass` as its argument
@@ -201,7 +201,7 @@ There are thousands of built-in functions in R.
 There are also help functions that you can use to find out what function do and how to use them. 
 The help appears in the bottom-right window of the RStudio.
 
-```
+```r
 ### helpfunctions
 
 ?plot
@@ -212,7 +212,7 @@ help(print)
 The functionality of R is expanded by R packages that include functions not present in the default installation of R. 
 When you need to use another package, do these 2 things:
 
-```
+```r
 ### working with additional packages 
 The functionality of R is expanded by R packages that include functions not present in the default 
 installation of R. 
@@ -227,7 +227,7 @@ library(knitr)
 
 You can also check which packages are installed.
 
-```
+```r
 installed.packages()
 ```
 
@@ -237,7 +237,7 @@ installed.packages()
 #### Smallest units in R: single-element data structures
 
 Let's assign value of 45 to a variable `age`. We just created the smallest object in R:
-```
+```r
 age <- 45
 
 #some useful functions to know more about the object 
@@ -256,7 +256,7 @@ The most common numeric classes used in R are integer and double (for double pre
 
 To find out the data type of an object, use `typeof()` function:
 
-```
+```r
 score <- 79
 typeof(score)
 is.integer(score)
@@ -268,7 +268,7 @@ The last expression is an example of a nested function. Nested functions are ver
 **Chaining** means that you invoke multiple method calls. As each method returns an object, you can actually allow the calls to be chained together in a single statement, without needing variables to store the intermediate results.
 If you prefer piping to nested functions, you can use packages like **tidyverse** or **magrittr** which use the `%>%` notation as piping, read as "THEN." To type `%>%`, the keyboard sortcut it Ctrl+Shift+M.
 The notation goes from `function(argument)` and instead is written as `argument %<% function()`. If there are more than one arguments, you continue to place the others in the brackets. 
-```
+```r
 install.packages("magrittr")
 library(magrittr)
 
@@ -291,7 +291,7 @@ is.logical(is.numeric(typeof(is.integer(score))))
 ```
 **Challenge 2: Answer**
 
-> ```
+> ```r
 > score <- 79
 > step1 <- is.integer(score)
 > print(step1)
@@ -313,7 +313,7 @@ is.logical(is.numeric(typeof(is.integer(score))))
 
 Sometimes you will need to convert between data types. There are functions that do that: `as.integer()`, `as.character()`, and so on. The conversion between data types is not always possible. Let's see what happens here:
 
-```
+```r
 score <- 79
 typeof(score)
 score <- as.integer(score)
@@ -337,7 +337,7 @@ but what would be the simplest object that you can make with multiple elements?
 * **Vectors**: collection of elements of the same data type
     * what part of our dataset can be represented by a vector?
     * how to create: use concatenate function, `c()`
-    ```
+    ```r
     ###let's make a vector
     v<-c(1:3, 45)
     v
@@ -376,7 +376,7 @@ but what would be the simplest object that you can make with multiple elements?
     
 * **Matrices**: 2-dimensional vectors that contain elements of the same data type
     * how to create: use `matrix()` function
-    ```
+    ```r
     m <- matrix(c(1:18), 3,6)
     m
     # try functions that we used for vectors - do they work on matrices?
@@ -387,7 +387,7 @@ but what would be the simplest object that you can make with multiple elements?
 * **Factors**: special vectors used to represent categorical data
     * what part of our dataset can be represented by a vector?
     * to create: use `factor()`
-    ```
+    ```r
     ## let's look at our dataset gapminder.txt
     ##Let's say continent is a category with different levels (continent names)
     #Let's create a factor continent with the names of the continent in our data
@@ -401,7 +401,7 @@ but what would be the simplest object that you can make with multiple elements?
 * **Lists** : generic vectors - collection of elements with different data types
     * what part of our dataset can be represented by a list?
     * to create: use `list()` function
-    ```
+    ```r
     l<-list("Afghanistan", 1952, 8769855)
     print(l)
     typeof(l)
@@ -410,7 +410,7 @@ but what would be the simplest object that you can make with multiple elements?
     ```
     
     Let's clear our environment.
-    ```
+    ```r
     rm(list = ls())
     ```
     
@@ -435,7 +435,7 @@ but what would be the simplest object that you can make with multiple elements?
     ```
     **Challenge 3: Answer**
     
-    > ```
+    > ```r
     > menuItems<-c("chicken", "soup", "salad", "tea")
     > menuType<-factor(c("solid", "liquid", "solid", "liquid"))
     > menuCost<-c(4.99, 2.99, 3.29, 1.89)
@@ -444,7 +444,7 @@ but what would be the simplest object that you can make with multiple elements?
         
     Now apply the following functions to the list you created. Try to predict the output before you run the command.
     
-    ```
+    ```r
     length(myorder)
     str(myorder)
     print(myorder)
@@ -455,7 +455,7 @@ but what would be the simplest object that you can make with multiple elements?
 
     * Yes! It is a list of vectors of equal length, or a data frame. If we make an example of it as `gapm`, we can see the structure.
     
-    ```
+    ```r
     gapm <- list(country <- c("afghan","albania"),continent <- c("asia","america"),year <- c(1952,1953))
     str(gapm)
     ```
@@ -470,7 +470,7 @@ but what would be the simplest object that you can make with multiple elements?
     
     Now let's combine with `data.frame()` function. How? Give it a different name, `myorder_df`.
 
-    ```
+    ```r
     myorder_df<-data.frame(menuItems, menuType, menuCost)
     
     #now view it!
@@ -510,7 +510,7 @@ myorder_df[1:3, ] #gets first 3 rows
 ```
 
 2. **By name**: Use `$` operator for lists and data frames ti extract columns as vectors
-```
+```r
 myorder_df$menuType
 ```
 
@@ -521,7 +521,7 @@ myorder_df$menuType
 * `>=` greater than or equal to
 * `<=` lesser than or equal to
 
-```
+```r
 v<-c(1,5,3,4,5)
 
 # select elements that equal to 5
@@ -574,7 +574,7 @@ TASK: Answer the following questions about `myData` object
 ```
 **Challenge: Answer**
 
-> ```
+> ```r
 > 1. str()
 > 
 > 2. typeof() 
@@ -603,7 +603,7 @@ TASK: Answer the following questions about `myData` object
 
 As you recall, an R script (or any other script) is a series of commands that are executed in the order they are written. Be sure to save your updates.
 To run your script from R studio (or R):
-```
+```r
 source("R_commands.R")
 ```
 
@@ -616,7 +616,7 @@ You might need to read help for 'mean' and 'barplot' functions
 ?barplot
 ```
 **Challenge: Answer**
-```{r}=
+```r
 ##This is  MeanGdp.R script
 
 #read data into R
