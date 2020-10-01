@@ -6,7 +6,8 @@ This lesson is based on [this Software Carpentry lesson](http://swcarpentry.gith
 #### Please make sure your directory structure is setup as described [here](https://github.com/uta-carpentries/SoftwareCarpentryWorkshops_general/blob/master/Data_DirectoryStructure_Setup.md)
 
 Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/` to `Lesson2_IntroToR` and take a look at our dataset in Excel. This dataset contains information about life expectancy, population sizes and gdp per capita in different countries for different years. Let's see how we can use R to analyze this dataset. 
-    ```
+
+  ```
     #in Bash/Terminal, do you remember what to do?
     cd Desktop/SCW/Data
     
@@ -17,7 +18,7 @@ Before we start talking about R, let's copy `gapminder.txt` file from `SCW/Data/
     
     #to check that it was copied properly
     ls ../Lesson2_IntrotoR/
-    ```
+  ```
 
 ### Learning objectives
 - Understand benefits of using R
@@ -48,13 +49,15 @@ We will be working with R using RStudio. This is a piece of software (also known
         * Both records can be saved for later as .Rhistory and .RData files
     * Bottom right = several helpful tabs, we will see how to use them later. For now, notice that 'Files' tab allows you to navigate between folders.
  
+ ![image of Rstudio interface](http://swcarpentry.github.io/r-novice-gapminder/fig/01-rstudio.png "RStudio Interface")
+ 
  ### Navigating to the `Lesson2_IntrotoR` working directory
  For this workshop we need to navigate to `Lesson2_IntroToR` folder. Many of you will be defaulted in the Documents folder as the current working directory. (You can change your `global options` in the Tools menu.) To change the working directory for the current environment, follow either the GUI steps or the Console steps below.
  
- ####GUI Steps:
+ #### GUI Steps:
  Click three dots icon at the top right corner of the 'Files' tab and navigate to `Desktop/SCW/Lesson2_IntroToR`.  You should see `gapminder.txt` file here. Now click 'More' and select 'Set as working directory'. Notice the change in your console window  - your work with R is now done from `Lesson2_IntroToR` folder.
  
- ####Console Steps:
+ #### Console Steps:
   ```
   #One option is to include the path.
   setwd("C:/Users/peace/Desktop/SCW/Lesson2_IntroToR")
@@ -66,6 +69,7 @@ We will be working with R using RStudio. This is a piece of software (also known
   getwd()
   [1] "C:/Users/peace/Desktop/SCW/Lesson2_IntroToR"
   ```
+  
   ### Beginning in R Studio
 When you type commands in the console window and press 'ENTER', they are executed immediately and the output is displayed. Here are few examples:  
    ```
@@ -95,10 +99,10 @@ Let's open a new R Script file by clicking the `+` icon on the top left corner o
    It is a good practice to comment your code. The comments (statements that are helpful to the user, but are not executed) in R start with `#`.  
    Let's add a comment to our simple script.
 
-    ```
+   ```
     #my first R command 
     print("Good morning")
-    ```
+   ```
     
    Let's save our script as `R_commands.R` file in `Lesson2_IntroToR` folder. Notice, this file is now visible inside `Lesson2_IntroToR` folder in the bottom-right pannel under `Files` tab.
     
@@ -111,8 +115,8 @@ Let's work in scripting mode from now on so that you will have the record of all
 
 One of the main concepts of any programming language is a notion of a **variable**. Variables are created to store values for future use. 
 To assign a value to a variable in R, use `<-`assignment operator. The keyboard shortcut is
-* For Windows: Alt+-
-* For Macs: Option+-
+* For Windows: `Alt+-`
+* For Macs: `Option+-`
 ```
 ### Variables
 
@@ -147,7 +151,7 @@ rm(list=ls())
 * Names should be MEANINGFUL & CONSISTENT - help yourself and others to understand your code! 
 
 
-**Challenge**
+<mark>**Challenge 1**</mark>
     
 ```
 TASK: What will be the value of each variable after each statement is executed in the following code?
@@ -160,6 +164,17 @@ height <- height + 20
         
 ```
 As you can see, a variable is assigned a value equal to the value of the evaluated expression on the right side of the assignment operator. But what about `height`?
+
+**Challenge 1: Answer**
+
+> ```
+> > mass
+> [1] 109.25
+> > age
+> [1] 102
+> > height
+> Error: object 'height' not found
+> ```
 
 ### Functions
 
@@ -264,7 +279,7 @@ score %>% sum(42) %>% sqrt()
 score %>% is.integer() %>% typeof()
 ```
 
-**Challenge** Learn how to read the output of nested functions and pipelines
+<mark>**Challenge 2**</mark> Learn how to read the output of nested functions and pipelines
 ```
 TASK: Break the following expression into multiple single function calls.
 You will need to assign the output of each function to a variable that
@@ -274,7 +289,7 @@ Assign: `score<-79`
 
 is.logical(is.numeric(typeof(is.integer(score))))
 ```
-**Challenge: Answer**
+**Challenge 2: Answer**
 
 > ```
 > score <- 79
@@ -286,9 +301,12 @@ is.logical(is.numeric(typeof(is.integer(score))))
 > print(step3)
 > step4 <- is.logical(step3)
 > print(step4)
+> 
 > ## Or as a single step:
+>
 > # nested functions
 > print(is.logical(is.numeric(typeof(is.integer(score)))))
+>
 > # pipeline
 > score %>% is.integer() %>% typeof() %>% is.numeric() %>% is.logical()
 > ```
@@ -318,7 +336,7 @@ but what would be the simplest object that you can make with multiple elements?
 
 * **Vectors**: collection of elements of the same data type
     * what part of our dataset can be represented by a vector?
-    * how to create: use concatenate function, c()
+    * how to create: use concatenate function, `c()`
     ```
     ###let's make a vector
     v<-c(1:3, 45)
@@ -355,8 +373,9 @@ but what would be the simplest object that you can make with multiple elements?
     v3 <- as.character(v3)  #also known as coersion
     str(v3)
     ```
+    
 * **Matrices**: 2-dimensional vectors that contain elements of the same data type
-    * how to create: use matrix() function
+    * how to create: use `matrix()` function
     ```
     m <- matrix(c(1:18), 3,6)
     m
@@ -364,9 +383,10 @@ but what would be the simplest object that you can make with multiple elements?
     # new to 2D structures
     dim(m)  # tells you number of rows and columns in your matrix
     ```
-* Factors: special vectors used to represent categorical data
+    
+* **Factors**: special vectors used to represent categorical data
     * what part of our dataset can be represented by a vector?
-    * to create: use factor()
+    * to create: use `factor()`
     ```
     ## let's look at our dataset gapminder.txt
     ##Let's say continent is a category with different levels (continent names)
@@ -380,7 +400,7 @@ but what would be the simplest object that you can make with multiple elements?
 
 * **Lists** : generic vectors - collection of elements with different data types
     * what part of our dataset can be represented by a list?
-    * to create: use list() function
+    * to create: use `list()` function
     ```
     l<-list("Afghanistan", 1952, 8769855)
     print(l)
@@ -389,12 +409,12 @@ but what would be the simplest object that you can make with multiple elements?
     length(l)
     ```
     
-    Let's clear our environment
+    Let's clear our environment.
     ```
     rm(list = ls())
     ```
     
-     **Challenge** 
+     <mark>**Challenge* 3*</mark>
     
     ```
     TASK: Try to create a list named 'myorder' that contains the 
@@ -413,7 +433,7 @@ but what would be the simplest object that you can make with multiple elements?
     *Hint: Define your elements first, then create a list with them.
     You will need c(), factor() and list() functions
     ```
-    **Challenge: Answer**
+    **Challenge 3: Answer**
     
     > ```
     > menuItems<-c("chicken", "soup", "salad", "tea")
@@ -423,10 +443,13 @@ but what would be the simplest object that you can make with multiple elements?
     > ```
         
     Now apply the following functions to the list you created. Try to predict the output before you run the command.
-    * length(myorder)
-    * str(myorder)
-    * print(myorder)
-        
+    
+    ```
+    length(myorder)
+    str(myorder)
+    print(myorder)
+    ```
+    
 * **Data frames**
     * Let's go back to gapminder dataset. Could you make an informative guess about how this data structure can be represented in R?
 
@@ -441,11 +464,11 @@ but what would be the simplest object that you can make with multiple elements?
     Let's look at our myorder list to see if we can make data frame out of it. 
     Is the list we just made suitable for a data frame? Yes, the elements of the list are vectors of equal size.
     
-    Previously we used list() to combine our elements:
+    Previously we used `list()` to combine our elements:
 
     * `myorder<-list(menuItems, menuType, menuCost)`
     
-    Now let's combine with data.frame() function. How? Give it a different name, myorder_df.
+    Now let's combine with `data.frame()` function. How? Give it a different name, `myorder_df`.
 
     ```
     myorder_df<-data.frame(menuItems, menuType, menuCost)
@@ -453,7 +476,7 @@ but what would be the simplest object that you can make with multiple elements?
     #now view it!
     myorder_df
     #does it look like our gapminder data set?
-    #and check with str()
+    #and check with `str()`
     #anything different compared to str(myorder)
     myorder
     myorder_df
@@ -467,42 +490,41 @@ but what would be the simplest object that you can make with multiple elements?
 
 Now let's talk about how to take your dataset apart. In general, you can access every element of your data set. You must be able to do that to manipulate and analyze your data. There are three general ways to subset the data:
 
+1. **By position index**: Use `[]` operator
 ```{r}
-### 1. By position index: Use [] operator
-
 v<-c(2:10)
 v
 
-## see what happens here
+# see what happens here
 v[2]
 v[c(3:6)]
 v[-c(3:5)]
 
-
-## the above works for lists too, notice that [] returns list, use [[]] to return vector
-## try subsetting myorder list we created above
+# the above works for lists too, notice that [] returns list, use [[]] to return vector
+# try subsetting myorder list we created above
 myorder[1]
 myorder[[1]]
 
-##for 2D structures like matrices and dataframes provide 2 indices [row, column]
+# for 2D structures like matrices and dataframes provide 2 indices [row, column]
 myorder_df[1:3, ] #gets first 3 rows
+```
 
-### 2. By name:
-# For lists and dataframes: use `$` operator to extract columns as vectors 
+2. **By name**: Use `$` operator for lists and data frames ti extract columns as vectors
+```
 myorder_df$menuType
+```
 
-### 3. By logical vector index: selects elements corresponding to TRUE values 
-### of logical vector:###
-#####################################
-# >  greater than
-# < lesser than                   
-# == equal to
-# >= greater than or equal to
-# <= lesser than or equal to
-#####################################
+3. **By logical vector index**: selects elements corresponding to TRUE values of logical vector
+* `>`  greater than
+* `<` lesser than                   
+* `==` equal to
+* `>=` greater than or equal to
+* `<=` lesser than or equal to
+
+```
 v<-c(1,5,3,4,5)
 
-#select elements that equal to 5
+# select elements that equal to 5
 v1<-v[v==5]
 v1
 
@@ -510,18 +532,13 @@ v1
 v==5   # returns logical vector
 #v[v==5] selects element of v that have TRUE values in the output of v==5
 
-##Use `myorder_df` dataframe:select rows that satisfy various conditions
-##Diplay logical vector to understand the ouput
+# Use `myorder_df` dataframe:select rows that satisfy various conditions
+# Diplay logical vector to understand the ouput
 df1<-myorder_df[myorder_df$menuType=="solid", ]
 df1
 
 df2<-myorder_df[myorder_df$menuCost>3, ]
 df2
-
-##Can you explain the output generated here?
-df3<-myorder_df[myorder_df$menuType=="solid"]
-df3
-
 ```
 
 
@@ -531,20 +548,18 @@ Let's return to our gapminder dataset.
 
 Before we examine our data, let's read(load) this dataset into R. There are multiple ways to read data into R. For table-like formats, there are 2 popular functions:
 
-* 1. Use read.table() function
-    * myData<-read.table("gapminder.txt", header = TRUE)
-    * Take a look at the new object myData
+* 1. Use `read.table()` function: `myData<-read.table("gapminder.txt", header = TRUE)`.
+    * Take a look at the new object `myData`.
     * A bit hard to see? It is too large to be displayed at the console. Different ways to see what your object looks like:
-        * Use head() function:
-            * head(myData)
-        * Look at the top right window, environment tab - gives you a brief summary of the object and opens an Excel-like view of the dataset
-        * always check that you read in a complete data set `dim(myData)` to see if you have the correct number of rows and columns
-* 2. Use read.csv() function
-This function is for .csv files (where fields are separated by a comma)
+        * Use `head()` function: `head(myData)`.
+        * Look at the top right window, environment tab - gives you a brief summary of the object and double-clicking a data frame opens an Excel-like view of the dataset.
+        * always check that you read in a complete data set `dim(myData)` to see if you have the correct number of rows and columns.
+* 2. Use `read.csv()` function.
+This function is for .csv files (where fields are separated by a comma).
 
-Now we know how to read dataframes into R. Let's use R to find out more about the data
+Now we know how to read data frames into R. Let's use R to find out more about the data.
 
-**Challenge**  Play with gapminder dataset
+<mark>**Challenge 4**</mark>  Play with gapminder dataset
 
 ```
 TASK: Answer the following questions about `myData` object
@@ -587,10 +602,8 @@ TASK: Answer the following questions about `myData` object
 ## 4. Saving R scripts
 
 As you recall, an R script (or any other script) is a series of commands that are executed in the order they are written. Be sure to save your updates.
-```
-
 To run your script from R studio (or R):
-```=
+```
 source("R_commands.R")
 ```
 
