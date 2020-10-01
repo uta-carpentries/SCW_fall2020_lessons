@@ -51,7 +51,7 @@ We will be working with R using RStudio. This is a piece of software (also known
         * Both records can be saved for later as .Rhistory and .RData files
     * Bottom right = several helpful tabs, we will see how to use them later. For now, notice that 'Files' tab allows you to navigate between folders.
  
- ![image of Rstudio interface](http://swcarpentry.github.io/r-novice-gapminder/fig/01-rstudio.png "RStudio Interface")
+ ![image of Rstudio interface](https://datacarpentry.org/r-intro-geospatial/fig/01-rstudio-script.png "RStudio Interface")
  
  ### Navigating to the `Lesson2_IntrotoR` working directory
  For this workshop we need to navigate to `Lesson2_IntroToR` folder. Many of you will be defaulted in the Documents folder as the current working directory. (You can change your `global options` in the Tools menu.) To change the working directory for the current environment, follow either the GUI steps or the Console steps below.
@@ -283,7 +283,7 @@ score %>% is.integer() %>% typeof()
 
 <mark>**Challenge 2:**</mark> Learn how to read the output of nested functions and pipelines
 ```
-TASK: Break the following expression into multiple single function calls.
+TASK: Break the following expression into multiple single function calls. (Optional) Provide the expression as a pipeline.
 You will need to assign the output of each function to a variable that
 will serve as an input(argument) for the next function. 
 What is the value of each variable? What does each function do? 
