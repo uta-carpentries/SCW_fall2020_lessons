@@ -235,33 +235,7 @@ if (x >= 10) {
 [1] x is greater than 5, but less than 10
 ```
 
-Important: when R evaluates the condition inside `if()` statements, it is looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some headaches for beginners. For example:
-
-**Input**
-```r
-x  <-  4 == 3
-if (x) {
-  "4 equals 3"
-} else {
-  "4 does not equal 3"
-}
-```
-**Output**
-```r
-[1] "4 does not equal 3"
-```
-
-As we can see, the not equal message was printed because the vector `x` is `FALSE`.
-
-**Input**
-```
-x <- 4 == 3
-x
-```
-**Output**
-```
-[1] FALSE
-```
+Important: when R evaluates the condition inside `if()` statements, it is looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some headaches for beginners. 
 
 ### Challenge 2
 Calculate the mean life Expectancy (using the previous user-defined function) of Asia. If the life expectancy is greater than or equal to 50, `print("Life Expectancy of Asia is greater than or equal to 50")`, if not `print("Life Expectancy of Asia is lower than 50")`
