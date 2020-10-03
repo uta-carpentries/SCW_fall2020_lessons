@@ -456,7 +456,7 @@ The **three components that must be specified** (minimum) to build a plot with `
 * geometric oblects (geom)
 
 
-> ### Challenge
+> ### Challenge 1
 >
 > Modify the example so that the figure shows how life expectancy has changed over time:
 > 
@@ -474,7 +474,7 @@ The **three components that must be specified** (minimum) to build a plot with `
 > > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
 > > ```
 >
-> ### Challenge
+> ### Challenge 2
 >
 > In the previous examples and challenge we've used the `aes` function to tell the scatterplot **geom** about the **x** and **y** locations of each point. Another *aesthetic* property we can modify is the point *color*. Modify the code from the previous challenge to **color** the points by the "continent" column. What trends do you see in the data? Are they what you expected?
 >
@@ -516,28 +516,6 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 
 In this example, the *aesthetic* mapping of **color** has been moved from the global plot options in `ggplot` to the `geom_line` layer so it no longer applies to the points. Now we can clearly see that the points are drawn on top of the lines.
 
-**In general**, each geom layer has 5 components that have different defaults depending on the geom type. Read more about layers [here]( https://rpubs.com/hadley/ggplot2-layers). For example, `geom_point()` is really a short way of writing:
-```
-layer(
-  mapping = NULL, 
-  data = NULL,
-  geom = "point",
-  stat = "identity",
-  position = "identity"
-) 
-```
-When `geom_point()` is called, `mapping`(aes) and `data` take values specified in `ggplot()`, and `stat` and `position` arguments take specified defaults. But each of the components can be set for each layer separately, overriding global values. Different combinations of these components generate different geoms. You can have geom_line(), geom_bar(), geom_boxplot(), geom_text(), geom_errorbar()… over 30 geoms.  
-
-Here are the settings for `geom_bar()`. You will get to make a bar plot at the end of the lesson.
-```
-layer(
-  mapping = NULL, 
-  data = NULL,
-  geom = "bar",
-  stat = "count",
-  position = "stack"
-)
-```
 Here is a full [documentation for ggplot2 package](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf). And also [here](https://ggplot2.tidyverse.org/reference/#section-layer-geoms).  What is important here is to know that you can specify these settings for every layer separately as we have seen in the previous example when we specified mapping for geom_line():  `geom_line(aes(color=continent))`.  
   
  
@@ -550,7 +528,7 @@ Here is a full [documentation for ggplot2 package](https://cran.r-project.org/we
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
      geom_line(color="blue") + geom_point()
 ```
-> ### Challenge
+> ### Challenge 3
 >
 > Switch the order of the point and line layers from the previous example. What happened?
 >
@@ -601,7 +579,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ```
 
-> ### Challenge 
+> ### Challenge 4
 > Part 1.
 >
 > Modify the color and size of the points on the point layer in the previous example.
@@ -620,7 +598,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > >  geom_smooth(method="lm", size=1.5)
 > > ```
 
-> ### Challenge
+> ### Challenge 5
 > Part 2.
 >
 > Modify your solution to Part 1 so that the points are now a different shape and are colored by continent with new 
@@ -709,7 +687,7 @@ This is a taste of what you can do with `ggplot2`. RStudio provides a really use
 [ggplot-doc]: http://docs.ggplot2.org/current/
 
 Now let's finish this lesson practicing making bar plots!
-> ### Challenge 
+> ### Challenge 6
 > #### Part 1.
 >
 > Plot life expectancy over years for a country of your choice using geom_bar()
@@ -769,7 +747,7 @@ If time permits, the following interactive activities can be run to showcase som
 
 Let's do this in terms of one of the cooler visualizations directly from the [**Gapminder** website](https://www.gapminder.org/tools/#_chart-type=bubbles). This visualization shows the relationship between income and life expectancy for all nations in the dataset. The points are scaled in size based on the population size of the nation and colored based on continent. So there is a lot of details here. 
 
-> ### Challenge
+> ### Challenge 7
 >
 > Can we create something pretty similar using `ggplot`? What variables in our dataset needs to be mapped to what aesthetics to achive this?
 >
