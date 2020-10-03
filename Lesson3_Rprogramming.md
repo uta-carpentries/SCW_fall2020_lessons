@@ -806,25 +806,4 @@ ggplotly(bubble)
 
 Now you'll see an interactive plot, which is really awesome for exploring and for showing off your data.
 
-The last thing we're missing from the **Gapminder** plot is the fact that it will cycle through years. We can't mimic this with with interactive plots at each time, but we can loop through plots for each year and make a movie-like animation. A pretty simple loop will do this.
-
-```{r animate_demo}
-for (yr in unique(gapminder$year)) {
-   bubble <- gapminder %>%
-      filter(year == yr) %>% 
-      ggplot(aes(x = gdpPercap,
-                 y = lifeExp,
-                 color = continent,
-                 size = pop)) +
-         geom_point() + 
-         labs(
-           x = "Income", 
-           y = "Life expectancy",
-           title = yr
-         ) 
-    plot(bubble)    # need to do this in loops
-    Sys.sleep(5)    # 5 sec pause between plots
-}
-```
-
 Very cool. See how easy it is to produce fancy plots in`R`!
