@@ -10,4 +10,4 @@ Instructors: Kristopher Row & Peace Ossom-Williamson
 Access the workshop lessons above.
 * Lesson 1: Introduction to Unix/Linux
 * Lesson 2: Introduction to R & RStudio
-* Lesson 3: Programming & Visualizing in R *coming soon*
+* Lesson 3: Programming & Visualizing in R
